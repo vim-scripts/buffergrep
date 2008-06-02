@@ -1,0 +1,21 @@
+This is a mirror of http://www.vim.org/scripts/script.php?script_id=2255
+
+Searches for strings in open buffers.  Instead of supplying a filename wildcard to direct the search, the grep command will search in open buffers which may or may not be represented by a file on the disk.  Moreover, since buffers are searched, changes that have not been saved to disk are scanned.  Unlisted, quickfix, and help buffers are skipped.
+
+Each grep command uses the same syntax as the builtin :vimgrep and :lvimgrep commands.  Results are displayed in the quickfix list.
+
+The following commands are defined:
+
+Bgrep - searches all buffers listed with the :buffers command, skipping over unlisted, quickfix, and help buffers.  Analagous to :bufdo.
+Agrep - searches all buffers listed with the :args command.  Analagous to :argdo.
+Wgrep - searches all buffers visible on the screen (current tab page only).  Analagous to :windo.
+Tgrep - searches all buffers open on any tabpage.  Analagous to :tabdo.
+
+Example:
+
+Bgrep /jhonka/  "find string 'jhonka' in all loaded buffers.
+Wgrep |foo|j  "find string 'foo' in all buffers currently on the screen, but don't jump to first match.
+Tgrep !bar!g  "find string 'bar' in all buffers visible in all tabpages, and list each occurance of 'bar', not just the first one on a line.
+Agrep baz    "find string 'baz' in all buffers from the args list; specifying the pattern this way means you can't use flags.
+
+Of course, the argument isn't just a literal string, it is a regular expression.  You man use any valid Vim regular expression atoms in your search.
